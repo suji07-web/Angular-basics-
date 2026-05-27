@@ -4,9 +4,14 @@
 <div id="login"></div>
   <form id="login-form">
     <label for="username">Username</label>
-    <input type="text" id="username" placeholder="Enter username" required />
+    <input name="username" type="text" id="username" placeholder="Enter username" [(ngModel)]="username"  [class.invalid]="usernameError"
+ (input)="usernameError = false"required />
     <label for="password">Password</label>
-    <input type="password" id="password" placeholder="Enter password" required />
+    <input name="password" type="password" id="password" maxlength="20" placeholder="Enter password" [(ngModel)]="password"  [class.invalid]="passwordError"
+ (input)="passwordError = false"required />
     <button type="button" (click)="login()">Log In</button>
+    <p class="error" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </p>
   </form>
 </div>
